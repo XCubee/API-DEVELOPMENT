@@ -24,3 +24,10 @@ def addpost(payload:dict = Body(...)):
     return {
         "The text would include a sample case for the  data provided "
     }
+
+@app.post("/post")
+def addingpost(payload dict = Body(...)):
+    return{
+        "Respiration Ekg A of : Person1 "
+        "Respiration Ekg A of : Person2 "
+    }
