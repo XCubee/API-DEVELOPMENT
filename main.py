@@ -18,3 +18,9 @@ def createpost(payload:dict= Body(...)):
     "new_message": f"title: {payload['saksham']}",
     "message": payload["amity"]
 }
+
+@app.get("/addpost")
+def addpost(payload:dict = Body(...)):
+    return {
+        "The text would include a sample case for the  data provided "
+    }
