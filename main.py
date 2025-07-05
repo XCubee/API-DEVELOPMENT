@@ -1,5 +1,7 @@
+from typing import Optional
 from fastapi import FastAPI
 from fastapi.params import Body 
+from pydantic import BaseModel
 
 app=FastAPI()
 @app.get("/")
@@ -25,9 +27,17 @@ def addpost(payload:dict = Body(...)):
         "The text would include a sample case for the  data provided "
     }
 
-@app.post("/post")
-def addingpost(payload dict = Body(...)):
-    return{
-        "Respiration Ekg A of : Person1 "
-        "Respiration Ekg A of : Person2 "
-    }
+
+#----------------------------------------------------------------
+class Post(BaseModel):
+    title:str
+    content:str
+    published:bool=True
+    rating: Optional[int]=None
+    
+
+@app.post("/new")
+def addingpost(new_post:Post):
+    return{new_post.title}
+
+
